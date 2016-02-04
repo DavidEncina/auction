@@ -64,10 +64,9 @@ public class Auction
             }
             else {
                 // Report which bid is higher.
-                Bid highestBid = selectedLot.getHighestBid();
                 System.out.println("Lot number: " + lotNumber +
                                    " already has a bid of: " +
-                                   highestBid.getValue());
+                                   selectedLot.getHighestBid().getValue());
             }
         }
     }
@@ -98,6 +97,24 @@ public class Auction
             System.out.println("Lot number: " + lotNumber +
                                " does not exist.");
             return null;
+        }
+    }
+    
+    /**
+     * Muestra por pantalla los detalles de todos los items que se estén subastando actualmente. 
+     * De aquellos por los que haya habido pujas se debe indicar el nombre de la persona que ha hecho la puja más alta y el valor de dicha puja.
+     * Del resto debe indicar que no ha habido pujas.
+     */
+    public void close()
+    {
+        for (Lot lot : lots) {
+            System.out.println(lot.toString());
+            if (lot.getHighestBid() != null) {
+                System.out.println("Nombre de la persona con la mayor puja: " + lot.getHighestBid().getBidder().getName() + ", Valor de puja maxima: " + lot.getHighestBid().getValue());
+            }
+            else {
+                System.out.println("No ha habido pujas");
+            }
         }
     }
 }
