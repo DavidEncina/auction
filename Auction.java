@@ -117,4 +117,18 @@ public class Auction
             }
         }
     }
+    
+    /**
+     * Devuelve una colección de todos los items por los que no habido ninguna puja en este momento
+     */
+    public ArrayList<Lot> getUnsold()
+    {
+        ArrayList<Lot> loteItemsSinPuja = new ArrayList<Lot>();
+        for (Lot lot : lots) {
+            if (lot.getHighestBid() == null) {
+                loteItemsSinPuja.add(lot);
+            }
+        }        
+        return loteItemsSinPuja;
+    }
 }
